@@ -15,11 +15,15 @@ In the paper, we use two dataset with high dense LiDAR.
 
 ### DublinCity Dataset
 
-[DublinCity](https://v-sense.scss.tcd.ie/dublincity/) is an open dataset, 
+[DublinCity](https://v-sense.scss.tcd.ie/dublincity/) is an open dataset, the original aerial and LiDAR point cloud can be [downloaded](https://geo.nyu.edu/catalog/nyu-2451-38684).
 
 ### Toulouse2020 Dataset
 
+Toulouse2020 is a  dataset collected by [IGN (French Mapping Agency)](https://www.ign.fr/) for [AI4GEO project](https://www.ai4geo.eu/), the origin dataset is very large.
 
+| <img src="/figures/Toulouse.jpg" width="700" alt="*Origin Toulouse2020 coverage*" /> |
+| :----------------------------------------------------------: |
+|                *Origin Toulouse2020 coverage*                |
 
 
 
