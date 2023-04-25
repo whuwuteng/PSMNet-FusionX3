@@ -25,6 +25,22 @@ Toulouse2020 is a  dataset collected by [IGN (French Mapping Agency)](https://ww
 | :----------------------------------------------------------: |
 |                *Origin Toulouse2020 coverage*                |
 
+Because the whole area is too large, in order to  registration the image and LiDAR, we select the center city of Toulouse, the experiment area is shown in 
+| <img src="/figures/Toulouse2020_cover.png" width="700" alt="*Toulouse2020 coverage*" /> |
+| :----------------------------------------------------------: |
+|                *Toulouse2020 experiment  coverage*                |
+
+
+### Data set generation
+
+The data is generated using our [previous work](https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLIII-B2-2021/405/2021/).
+The training and testing splitting is :
+
+|   <img src="/figures/DublinCity_show.jpg" width="700" alt="*DublinCity coverage*" />           |     <img src="/figures/Toulouse2020_show.jpg" width="700" alt="*Toulouse2020 coverage*" />           |
+| :--------: | :----------: |
+| DublinCity | Toulouse2020 |
+
+## Method
 
 
 
