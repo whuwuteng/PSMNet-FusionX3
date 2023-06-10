@@ -15,7 +15,17 @@ In the paper, we use two dataset with high dense LiDAR.
 
 ### DublinCity Dataset
 
-[DublinCity](https://v-sense.scss.tcd.ie/dublincity/) is an open dataset, the original aerial and LiDAR point cloud can be [downloaded](https://geo.nyu.edu/catalog/nyu-2451-38684).
+[DublinCity](https://v-sense.scss.tcd.ie/dublincity/) is an open dataset, the original aerial and LiDAR point cloud can be [downloaded](https://geo.nyu.edu/catalog/nyu-2451-38684), the origin dataset is very large.
+
+| <img src="/figures/DublinCity.png" width="700" alt="*Origin DublinCity coverage*" /> |
+| :----------------------------------------------------------: |
+|                *Origin DublinCity coverage*                |
+
+Because the origin dataset use Terrasolid for the orientation, the origin orientation is not accurate, so the registration step is mondatory, the experiment area is shown in 
+
+| <img src="/figures/DublinCity_cover.png" width="700" alt="*DublinCity coverage*" /> |
+| :----------------------------------------------------------: |
+|                *DublinCity experiment  coverage*                |
 
 ### Toulouse2020 Dataset
 
