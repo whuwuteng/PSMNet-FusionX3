@@ -52,8 +52,42 @@ The training and testing splitting is :
 
 ## Method
 
+In the paper, we propose a method based on PSMNet[^1],  based on  the stereo work, like the work[^2] in computer vision, we use the TIN expansion for remote sensing data. The newwork is shown : 
+
+| <img src="/figures/PSMNet_LiDAR.jpg" width="700" alt="*PSMNet-FusionX3*" /> |
+| :----------------------------------------------------------: |
+|                *PSMNet-FusionX3*                |
+
+In the experiment, we compare our method with GCNet[^3], PSMNet, GuidedStereo[^4], and GCNet-CCVNorm[^5]. There is no official code for GCNet, so the GCNet result is from the code of GCNet-CCVNorm.
 
 
+[^1]: Chang, Jia-Ren, and Yong-Sheng Chen. "Pyramid stereo matching network." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018.
+
+[^2]: Huang, Yu-Kai, et al. "S3: Learnable sparse signal superdensity for guided depth estimation." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2021.
+
+[^3]: Kendall, Alex, et al. "End-to-end learning of geometry and context for deep stereo regression." Proceedings of the IEEE international conference on computer vision. 2017.
+
+[^4]: Poggi, Matteo, et al. "Guided stereo matching." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2019.
+
+[^5]: Wang, Tsun-Hsuan, et al. "3d lidar and stereo fusion using stereo matching network with conditional cost volume normalization." 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). IEEE, 2019.
+
+## Code
+
+
+
+
+
+
+## BibTeX Citation
+
+<pre>@inproceedings{wu2023psmnet,
+  title={PSMNet-FusionX3: LiDAR-Guided Deep Learning Stereo Dense Matching on Aerial Images},
+  author={Wu, Teng and Vallet, Bruno and Pierrot-Deseilligny, Marc},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={6526--6535},
+  year={2023}
+}
+</pre>
 
 ## Feed Back
 
