@@ -40,7 +40,6 @@ Because the whole area is too large, in order to  registration the image and LiD
 | :----------------------------------------------------------: |
 |                *Toulouse2020 experiment  coverage*                |
 
-
 ### Data set generation
 
 The data is generated using our [previous work](https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLIII-B2-2021/405/2021/).
@@ -49,6 +48,10 @@ The training and testing splitting is :
 |   <img src="/figures/DublinCity_show.jpg" width="700" alt="*DublinCity coverage*" />           |     <img src="/figures/Toulouse2020_show.jpg" width="700" alt="*Toulouse2020 coverage*" />           |
 | :--------: | :----------: |
 | DublinCity | Toulouse2020 |
+
+We will also publish the dataset for public use, because the 
+
+
 
 ## Method
 
@@ -72,6 +75,18 @@ In the experiment, we compare our method with GCNet[^3], PSMNet, GuidedStereo[^4
 [^5]: Wang, Tsun-Hsuan, et al. "3d lidar and stereo fusion using stereo matching network with conditional cost volume normalization." 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). IEEE, 2019.
 
 ## Code
+
+
+
+
+
+The pre-trained  models will be also available.
+
+For the other methods, because  our dataset is different from the computer vision dataset, we will also put the revised code in this repository. 
+
+### Guided Stereo Matching
+
+We revise the [official code](https://github.com/mattpoggi/guided-stereo)  to adopt to the remote sensing dataset, the detail can be found in [folder](./guided-stereo).
 
 
 
