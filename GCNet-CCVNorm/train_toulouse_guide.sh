@@ -1,6 +1,4 @@
 #! /bin/bash
-#--loadmodel /work/OT/ai4geo/users/tengw/PreTrain_Model_Save/PSMNet/pretrained_model_KITTI2015.tar \
-
 
 BASEDIR=$(pwd -L)
 echo "${BASEDIR}"

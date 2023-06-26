@@ -2,7 +2,11 @@
 
 ## Introduction
 
-The site is for the paper appear in CVPR2023 [Photogrammetric Computer Vision Workshop](https://photogrammetric-cv-workshop.github.io/).
+The site is for the paper appear in CVPR2023 [Photogrammetric Computer Vision Workshop](https://photogrammetric-cv-workshop.github.io/program.html).
+
+The 8 minute presentation can be found [here](https://docs.google.com/presentation/d/1Phdm8ITpiKVgrHSTDY7iRewfC_6cToJ3z4dt_W6dZ3Y/edit?usp=sharing).
+
+I also make a poster, but I did not participate in person because of visa issue, the poster can be found  [here](https://docs.google.com/presentation/d/1i2DSw-lg7Hk6dbXfVvOf2UsuL5RfdTL_/edit?usp=sharing&ouid=108677916770799835536&rtpof=true&sd=true).
 
 ## Dataset
 
