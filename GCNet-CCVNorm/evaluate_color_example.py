@@ -51,8 +51,8 @@ def parse_arg():
                         help='Path to weight of the trained model.')
     parser.add_argument('--leftimg', default='', help='input left image')
     parser.add_argument('--rightimg', default='', help='input right image')
-    parser.add_argument('--leftGuide', default='', help='input left guide image')
-    parser.add_argument('--rightGuide', default='', help='input right guide image')
+    parser.add_argument('--leftGuide', default=None, help='input left guide image')
+    parser.add_argument('--rightGuide', default=None, help='input right guide image')
     parser.add_argument('--result', default='', help='save result with subfolder')
     parser.add_argument('--maxdisp', type=int, default=192,
                         help='maxium disparity')
@@ -79,16 +79,6 @@ def main():
 
     # Define model and load
     model = options.get_model(args.model_name)
-    
-    #PSMNet_LIDAR
-    """norm_mode = ['naive_categorical', # Applying categorical CBN on 3D-CNN in stereo matching network
-                'naive_continuous', # Applying continuous CBN on 3D-CNN in stereo matching network
-                'categorical', # Applying categorical CCVNorm on 3D-CNN in stereo matching network
-                'continuous', # Applying continuous CCVNorm on 3D-CNN in stereo matching network
-                'categorical_hier', # Applying categorical HierCCVNorm on 3D-CNN in stereo matching network
-                ][4]
-
-    model = PSMNetLiDAR(maxdisparity = args.maxdisp, norm_mode = norm_mode)"""
 
     if not args.no_cuda:
         # make no sense
@@ -96,11 +86,6 @@ def main():
         #model = nn.DataParallel(model)
         model = model.cuda()
     utils.load_checkpoint(model, None, None, args.model_path, True)
-
-    """if args.model_path is not None:
-        print('load PSMNet LiDAR')
-        state_dict = torch.load(args.model_path)
-        model.load_state_dict(state_dict['state_dict'])"""
 
     # Perform testing
     model.eval()
@@ -122,35 +107,32 @@ def main():
         #for it, left in enumerate(pbar):
         imgL_o = Image.open(args.leftimg).convert('RGB')
         imgR_o = Image.open(args.rightimg).convert('RGB')
-        #imgL = io.imread(all_left_img[it])
-        #imgR = io.imread(all_right_img[it])
-        guideL_o = Image.open(args.leftGuide)
-        guideR_o = Image.open(args.rightGuide)
 
         imgL = np.array(imgL_o)
         imgR = np.array(imgR_o)
-        guideL = np.array(guideL_o).astype(np.float32)/args.disp_scale#np.ascontiguousarray(guideL_o,dtype=np.float32)/args.disp_scale
-        guideL = guideL[:,:,np.newaxis]
-        guideR = np.array(guideR_o).astype(np.float32)/args.disp_scale#np.ascontiguousarray(guideR_o,dtype=np.float32)/args.disp_scale
-        guideR = guideR[:,:,np.newaxis]
+        if args.leftGuide and args.rightGuide :
+            guideL_o = Image.open(args.leftGuide)
+            guideR_o = Image.open(args.rightGuide)
+            guideL = np.array(guideL_o).astype(np.float32)/args.disp_scale#np.ascontiguousarray(guideL_o,dtype=np.float32)/args.disp_scale
+            guideL = guideL[:,:,np.newaxis]
+            guideR = np.array(guideR_o).astype(np.float32)/args.disp_scale#np.ascontiguousarray(guideR_o,dtype=np.float32)/args.disp_scale
+            guideR = guideR[:,:,np.newaxis]
         
         # Pack data
         inputs = dict()
         inputs['left_rgb'] = torch.unsqueeze(transform_rgb(imgL),0) 
         inputs['right_rgb'] = torch.unsqueeze(transform_rgb(imgR),0) 
-        inputs['left_sd'] = torch.unsqueeze(transform_depth(guideL),0) 
-        inputs['right_sd'] = torch.unsqueeze(transform_depth(guideR),0) 
+
+        if args.leftGuide and args.rightGuide :
+            inputs['left_sd'] = torch.unsqueeze(transform_depth(guideL),0) 
+            inputs['right_sd'] = torch.unsqueeze(transform_depth(guideR),0) 
         
         if not args.no_cuda :
             inputs['left_rgb'] = inputs['left_rgb'].cuda()
             inputs['right_rgb'] = inputs['right_rgb'].cuda()
-            inputs['left_sd'] = inputs['left_sd'].cuda()
-            inputs['right_sd'] = inputs['right_sd'].cuda()
-
-        #print('image: ')
-        #print(inputs['left_rgb'].shape)
-        #print('depth: ')
-        #print(inputs['left_sd'].shape)
+            if args.leftGuide and args.rightGuide :
+                inputs['left_sd'] = inputs['left_sd'].cuda()
+                inputs['right_sd'] = inputs['right_sd'].cuda()
 
         # Inference
         end = time.time()

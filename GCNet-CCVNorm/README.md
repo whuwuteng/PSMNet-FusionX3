@@ -12,7 +12,17 @@ Because the GCNet doesn't provide the official code, the base method is GCNet, s
 
 #### Testing
 
+We will give an  example in the code folder, the file is shown in [example folder](./example), the pre-trained model is in [pre-trained folder](pretrained).
 
+We can test the example by running :
+
+```
+
+#! /bin/bash
+
+./evaluate_color_example_GCNet.sh
+
+```
 
 
 
