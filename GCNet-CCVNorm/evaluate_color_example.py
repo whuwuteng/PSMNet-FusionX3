@@ -33,8 +33,6 @@ from dataset.dataset_kitti2015 import DatasetKITTI2015
 from dataset import vaihingen_evaluation as ve
 from misc import options
 
-from model.psmnet_lidar import PSMNetLiDAR
-
 SEED = 100
 random.seed(SEED)
 np.random.seed(seed=SEED)
@@ -110,8 +108,8 @@ def main():
 
         # test for 16GB GPU 
         # refer to https://stackoverflow.com/questions/71738218/module-pil-has-not-attribute-resampling
-        imgL_o.thumbnail((512,512), Image.BICUBIC)
-        imgR_o.thumbnail((512,512), Image.BICUBIC)
+        #imgL_o.thumbnail((512,512), Image.BICUBIC)
+        #imgR_o.thumbnail((512,512), Image.BICUBIC)
 
         imgL = np.array(imgL_o)
         imgR = np.array(imgR_o)
@@ -119,12 +117,13 @@ def main():
             guideL_o = Image.open(args.leftGuide)
             guideR_o = Image.open(args.rightGuide)
 
-            guideL_o.thumbnail((512,512), Image.NEAREST)
-            guideR_o.thumbnail((512,512), Image.NEAREST)
+            # test for small GPU
+            #guideL_o.thumbnail((512,512), Image.NEAREST)
+            #guideR_o.thumbnail((512,512), Image.NEAREST)
 
-            guideL = np.array(guideL_o).astype(np.float32)/args.disp_scale/2.0#np.ascontiguousarray(guideL_o,dtype=np.float32)/args.disp_scale
+            guideL = np.array(guideL_o).astype(np.float32)/args.disp_scale#np.ascontiguousarray(guideL_o,dtype=np.float32)/args.disp_scale
             guideL = guideL[:,:,np.newaxis]
-            guideR = np.array(guideR_o).astype(np.float32)/args.disp_scale/2.0#np.ascontiguousarray(guideR_o,dtype=np.float32)/args.disp_scale
+            guideR = np.array(guideR_o).astype(np.float32)/args.disp_scale#np.ascontiguousarray(guideR_o,dtype=np.float32)/args.disp_scale
             guideR = guideR[:,:,np.newaxis]
         
         # Pack data
