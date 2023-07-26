@@ -46,7 +46,7 @@ Because the whole area is too large, in order to  registration the image and LiD
 
 ### Data set generation
 
-The data is generated using our [previous work](https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLIII-B2-2021/405/2021/).
+The data is generated using our [previous work](https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLIII-B2-2021/405/2021/), the detail introduction can also be found on [Github](https://github.com/whuwuteng/benchmark_ISPRS2021).
 The training and testing splitting is :
 
 |   <img src="/figures/DublinCity_show.jpg" width="700" alt="*DublinCity coverage*" />           |     <img src="/figures/Toulouse2020_show.jpg" width="700" alt="*Toulouse2020 coverage*" />           |
