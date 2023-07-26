@@ -27,7 +27,7 @@ We can test the example by running :
 The result can be shown : 
 | <img src="example/3489_DUBLIN_AREA_2KM2_rgb_125019_id412c1_20150326121409_3489_DUBLIN_AREA_2KM2_rgb_128080_id728c1_20150326151319_0004_res.png" width="400"> |
 | :----------------------------------------------------------: |
-|                 *Origin DublinCity coverage*                 |
+|             *The result of GCNet on DublinCity*              |
 
 ## GCNet_CCVNorm 
 
@@ -49,7 +49,7 @@ In the example, the guidance is 0.5%, the result can be show :
 
 | <img src="example/3489_DUBLIN_AREA_2KM2_rgb_125019_id412c1_20150326121409_3489_DUBLIN_AREA_2KM2_rgb_128080_id728c1_20150326151319_0004_res_guide.png" width="400"> |
 | :----------------------------------------------------------: |
-|                 *Origin DublinCity coverage*                 |
+|         *The result of GCNet-CCVNorm on DublinCity*          |
 
 
 
