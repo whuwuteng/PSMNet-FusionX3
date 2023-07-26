@@ -53,9 +53,7 @@ The training and testing splitting is :
 | :--------: | :----------: |
 | DublinCity | Toulouse2020 |
 
-We will also publish the dataset for public use, because the 
-
-
+We will also publish the dataset for public use, because the original dataset is too large, at present, we will only publish the used training and testing dataset in the paper.
 
 ## Method
 
@@ -97,6 +95,10 @@ We revise the [official code](https://github.com/zswang666/Stereo-LiDAR-CCVNorm)
 ### PSMNet-FusionX3 
 
 We also release the code of our method, the detail can be found in [folder](./PSMNet-FusionX3).
+
+### Dataset proprocessing
+
+Because the input guidance is sampled from the origin dense disparity, and for the TIN based interpolation, this is processed before training, the detail can be found in [folder](./preprocessing).
 
 ## BibTeX Citation
 
