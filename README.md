@@ -96,7 +96,7 @@ We revise the [official code](https://github.com/zswang666/Stereo-LiDAR-CCVNorm)
 
 ### PSMNet-FusionX3 
 
-
+We also release the code of our method, the detail can be found in [folder](./PSMNet-FusionX3).
 
 ## BibTeX Citation
 
