@@ -57,3 +57,9 @@ In the example, the guidance is 0.5%, the result can be show :
 
 The training step depends on the structure of the training data, we will git an example in the file **train_toulouse_guide.sh**.
 
+
+
+## Feed Back
+
+If you think you have any problem, contact Teng Wu <whuwuteng@gmail.com>
+
