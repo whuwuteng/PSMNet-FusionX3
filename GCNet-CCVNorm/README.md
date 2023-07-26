@@ -38,9 +38,11 @@ We can test the example by running :
 
 #! /bin/bash
 
-./evaluate_color_example.sh
+./evaluate_color_example_GCNet_CCVNorm.sh
 
 ```
+
+In the example, 
 
 
 
