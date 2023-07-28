@@ -55,6 +55,8 @@ The training and testing splitting is :
 
 We will also publish the dataset for public use, because the original dataset is too large, at present, we will only publish the used training and testing dataset in the paper.
 
+All the dataset are host by [Zenodo](https://zenodo.org/), the download site is here.
+
 ## Method
 
 In the paper, we propose a method based on PSMNet[^1],  based on  the stereo work, like the work[^2] in computer vision, we use the TIN expansion for remote sensing data. The newwork is shown : 
