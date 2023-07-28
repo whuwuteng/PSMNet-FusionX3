@@ -71,7 +71,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # test
-    #CreateRightDisp(args.src, args.tar, args.disp_scale)
+    CreateRightDisp(args.src, args.tar, args.disp_scale)
+    exit()
 
     filelist = load_vaihingen_data(args.txtlist, args.srcfolder)
 
