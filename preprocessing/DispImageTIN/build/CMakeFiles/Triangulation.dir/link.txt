@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -fopenmp  -O3 -Wall -shared -Wl,-soname,libTriangulation.so -o libTriangulation.so CMakeFiles/Triangulation.dir/triangle/triangle.cpp.o 
