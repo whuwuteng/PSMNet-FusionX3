@@ -8,7 +8,9 @@ On the other handle, to keep the dataset small, we use the (dL-dR=d) to convert 
 
 ## Sampling
 
+## Left disparity to right
 
+To save the 
 
 
 ## Feed Back
