@@ -20,10 +20,6 @@ INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
 find_package(OpenImageIO REQUIRED)
 include_directories(${OPENIMAGEIO_INCLUDES})
 
-# install boost by apt-get method
-find_package(Boost 1.65 REQUIRED)
-include_directories(${Boost_INCLUDE_DIRS})
-
 aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/IO io_src)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/IO)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/triangle)

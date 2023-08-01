@@ -63,19 +63,87 @@ bool PointInTriangle(NODE * pNode, TRIG * pTrig, int x, int y)
     return ((d1 == d2) && (d2 == d3));
 }
 
+double Uncertainty( NODE * pNode, TRIG * pTrig, int x, int y)
+{
+    NODE * pNode1 = pNode + pTrig->vtx[0];
+    NODE * pNode2 = pNode + pTrig->vtx[1];
+    NODE * pNode3 = pNode + pTrig->vtx[2];
+
+    double x1 = pNode1->crd[0];
+    double y1 = pNode1->crd[1];
+
+    double x2 = pNode2->crd[0];
+    double y2 = pNode2->crd[1];
+
+    double x3 = pNode3->crd[0];
+    double y3 = pNode3->crd[1];
+
+    double L = x1 * y2 + x3 * y1 + x2 * y3 - x3 * y2 - x1 * y3 - x2 * y1;
+
+    double a1 = (y2 - y3)/L;
+    double a2 = (y3 - y1)/L;
+    double a3 = (y1 - y2)/L;
+
+    double b1 = (x3 - x2)/L;
+    double b2 = (x1 - x3)/L;
+    double b3 = (x2 - x1)/L;
+
+    double c1 = (x2 * y3 - x3 * y2)/L;
+    double c2 = (x3 * y1 - x1 * y3)/L;
+    double c3 = (x1 * y2 - x2 * y1)/L;
+
+    double m1 = a1 * x + b1 * y + c1;
+    double m2 = a2 * x + b2 * y + c2;
+    double m3 = a3 * x + b3 * y + c3;
+
+    double M = m1 * m1 + m2 * m2 + m3 * m3;
+
+    return M;
+}
+
+bool TriangleConsistency( NODE * pNode, TRIG * pTrig, double *pDisp, int nRows, int nCols)
+{
+    // a threshold for the incontinuty
+    double disp_continuty = 3.0 * 256.0;
+
+    NODE * pNode1 = pNode + pTrig->vtx[0];
+    NODE * pNode2 = pNode + pTrig->vtx[1];
+    NODE * pNode3 = pNode + pTrig->vtx[2];
+
+    int x1 = int(pNode1->crd[0] + 0.5);
+    int y1 = int(pNode1->crd[1] + 0.5);
+
+    int x2 = int(pNode2->crd[0] + 0.5);
+    int y2 = int(pNode2->crd[1] + 0.5);
+
+    int x3 = int(pNode3->crd[0] + 0.5);
+    int y3 = int(pNode3->crd[1] + 0.5);
+
+    if (fabs(pDisp[y1 * nCols + x1] - pDisp[y2 * nCols + x2]) < disp_continuty && \
+        fabs(pDisp[y1 * nCols + x1] - pDisp[y3 * nCols + x3]) < disp_continuty && \
+        fabs(pDisp[y2 * nCols + x2] - pDisp[y3 * nCols + x3]) < disp_continuty){
+            return true;
+    }
+    else{
+        return false;
+    }
+}
+
 // use the TIN to give a more dense disparity
 int main(int argc, char const *argv[])
 {
-	if (argc != 3){
-		std::cout << "CreateDispDenseTIN SrcImage TarImage" << std::endl;
+	if (argc != 4){
+		std::cout << "CreateDispDenseTIN SrcImage TarImage uncertainty" << std::endl;
 		return -1;
 	}
 	
 	char szSrcImg[512] = { 0 };
 	char szTarImg[512] = { 0 };
+    char szCmpImg[512] = { 0 };
 	
 	strcpy(szSrcImg, argv[1]);
 	strcpy(szTarImg, argv[2]);
+    strcpy(szCmpImg, argv[3]);
 	
 	COpenImageIO srcImage;
 	if (! srcImage.Open(szSrcImg)){
@@ -102,6 +170,9 @@ int main(int argc, char const *argv[])
     
     double * pDisp = new double[nRows * nCols];
     memset(pDisp, 0, sizeof(double) * nRows * nCols);
+
+    double * pUnCertainty = new double[nRows * nCols];
+    memset(pUnCertainty, 0, sizeof(double) * nRows * nCols);
     
     int nValid = 0;
     for (int i = 0; i < nRows; ++i) {
@@ -200,14 +271,25 @@ int main(int argc, char const *argv[])
     
     for (int i = 0; i < nRows; ++i) {
         for (int j = 0; j < nCols; ++j) {
-            if (pMark[i * nCols + j] == MARK_LABEL) continue;
-            int nCircle = TrigLabel[i * nCols + j].size();
-            if (nCircle > 0){
-                for (int m = 0; m < nCircle; ++m) {
-                    TRIG * pTrigOverLap = pTrig + TrigLabel[i * nCols + j][m];
-                    if (PointInTriangle(pNode, pTrigOverLap, j, i)){
-                        pDisp[i * nCols + j] = pTrigOverLap->Interpolate(j, i);
-                        break;
+            if (pMark[i * nCols + j] == MARK_LABEL){
+                pUnCertainty[i * nCols + j] = 1.0;
+            }
+            else{
+                int nCircle = TrigLabel[i * nCols + j].size();
+                if (nCircle > 0){
+                    for (int m = 0; m < nCircle; ++m) {
+                        TRIG * pTrigOverLap = pTrig + TrigLabel[i * nCols + j][m];
+                        if (PointInTriangle(pNode, pTrigOverLap, j, i)){
+                            // only check the evalueation
+                            if (TriangleConsistency(pNode, pTrigOverLap, pDisp, nRows, nCols)){
+                                // too large
+                                pDisp[i * nCols + j] = pTrigOverLap->Interpolate(j, i);
+
+                                //calculate the uncertainty
+                                pUnCertainty[i * nCols + j] = Uncertainty(pNode, pTrigOverLap, j, i);
+                            }
+                            break;
+                        }
                     }
                 }
             }
@@ -242,5 +324,20 @@ int main(int argc, char const *argv[])
 	
 	delete []pTarImage;		pTarImage = NULL;
 	
+    unsigned char * pUnCertaintyImg = new unsigned char[nRows * nCols];
+    memset(pUnCertaintyImg, 0, sizeof(unsigned char) * nRows * nCols);
+
+    for (int i = 0; i < nRows; ++i) {
+        for (int j = 0; j < nCols; ++j) {
+            if (pUnCertainty[i * nCols + j] > 0){
+                pUnCertaintyImg[i * nCols + j] = (unsigned char)(pUnCertainty[i * nCols + j] * 255 + 0.5);
+            }
+        }
+    }
+
+    delete []pUnCertainty;    pUnCertainty = NULL;
+    SaveImg(szCmpImg, pUnCertaintyImg, nRows, nCols, 1);
+
+    delete []pUnCertaintyImg; pUnCertaintyImg = NULL;
     return 0;
 }
