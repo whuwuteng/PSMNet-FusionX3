@@ -99,7 +99,7 @@ Considering that we have published [two dataset](https://zenodo.org/record/82000
     │   │   └── disp_occ						# disparity images for the left image
     │	│       ├── 3489_DUBLIN_..._0000.png	# crop image 1
     │	│       ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│   │   └── ...
+    │	│       └── ...
     │   └── test_filelist_full.txt    			# all the test folders
     ├── training                   				# training data
     │   ├── 3489_DUBLIN_...          			# stereo pair
@@ -114,7 +114,7 @@ Considering that we have published [two dataset](https://zenodo.org/record/82000
     │   │   └── disp_occ						# disparity images for the left image
     │	│       ├── 3489_DUBLIN_..._0000.png	# crop image 1 
     │	│       ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│   │   └── ...
+    │	│       └── ...
     │   ├── dublin_trainlist_full.txt   		# image used for training (1200 images)
     │   └── dublin_vallist_full.txt    			# image used for testing (200 images)
     └── Dublin_BHratio_ax.png     				# Base height ratio information
