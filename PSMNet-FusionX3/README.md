@@ -2,9 +2,17 @@
 
 ## Introduction
 
+In the folder, the code of PSMNet-FusionX3 is provide. In the [paper](https://openaccess.thecvf.com/content/CVPR2023W/PCV/html/Wu_PSMNet-FusionX3_LiDAR-Guided_Deep_Learning_Stereo_Dense_Matching_on_Aerial_Images_CVPRW_2023_paper.html),  Pytorch and [PytorchLightning](https://www.pytorchlightning.ai/index.html) are used. In the following, the training and testing part are introduced.
+
+## Training
+
+Before training, the training data need to be prepare before training, the detail can be found in folder [preprocessing](../preprocessing).
 
 
-## Example
+
+## Testing
+
+
 
 We will give an  example in the code folder, the file is shown in [example folder](./example), the pre-trained model is in [pre-trained folder](pretrained).
 
@@ -22,9 +30,9 @@ The result is shown in :
 
 
 
-## Training
+## PytorchLightning
 
-The training step depends on the structure of the training data, we will git an example in the file 
+
 
 
 ## Acknowledgments
@@ -38,3 +46,4 @@ Thanks to Tsun-Hsuan Wang for sharing the origin implementation of Stereo-LiDAR-
 ## Feed Back
 
 If you think you have any problem, contact Teng Wu <whuwuteng@gmail.com>
+
