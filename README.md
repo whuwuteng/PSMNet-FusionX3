@@ -65,7 +65,7 @@ In the paper, we propose a method based on PSMNet[^1],  based on  the stereo wor
 | :----------------------------------------------------------: |
 |                *PSMNet-FusionX3*                |
 
-In the experiment, we compare our method with GCNet[^3], PSMNet, GuidedStereo[^4], and GCNet-CCVNorm[^5]. There is no official code for GCNet, so the GCNet result is from the code of GCNet-CCVNorm.
+In the experiment, we compare our method with GCNet[^3], PSMNet[^1], GuidedStereo[^4], and GCNet-CCVNorm[^5]. There is no official code for GCNet, so the GCNet result is from the code of GCNet-CCVNorm.
 
 
 [^1]: Chang, Jia-Ren, and Yong-Sheng Chen. "Pyramid stereo matching network." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018.
