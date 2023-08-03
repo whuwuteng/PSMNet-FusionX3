@@ -58,31 +58,31 @@ def RandomSampleDisp(disp_src, disp_tar, scale) :
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='show the histgram of disparity')
 
-    parser.add_argument("--src", type=str, default='', help='input disparity image')
-    parser.add_argument("--tar", type=str, default='', help='output disparity image')
-    parser.add_argument("--txtlist", type=str, default='', help='input disparity image')
-    parser.add_argument("--folder", type=str, default='', help='output disparity image')
+    parser.add_argument("--src", type=str, default=None, help='input disparity image')
+    parser.add_argument("--tar", type=str, default=None, help='output disparity image')
+    parser.add_argument("--txtlist", type=str, default=None, help='input disparity image')
+    parser.add_argument("--folder", type=str, default=None, help='output disparity image')
     parser.add_argument('--scale', type=float ,default=0, help='random select scale')
     
     args = parser.parse_args()
 
-    # test
-    RandomSampleDisp(args.src, args.tar, args.scale)
-    exit()
+    if args.src and args.tar :
+        RandomSampleDisp(args.src, args.tar, args.scale)
 
-    filelist = load_vaihingen_data(args.txtlist)
+    if args.txtlist and args.folder :
+        filelist = load_vaihingen_data(args.txtlist)
 
-    for current_file in filelist:
-        index2_dir = current_file.rfind('/')
-        index1_dir = current_file.rfind('/', 0, index2_dir)
-        
-        save_path = current_file[0: index1_dir] + '/' + args.folder 
-        if not os.path.exists(save_path) :
-            os.makedirs(save_path)
-         
-        filename = current_file[0: index1_dir] + '/' + args.folder + current_file[index2_dir: len(current_file)]
+        for current_file in filelist:
+            index2_dir = current_file.rfind('/')
+            index1_dir = current_file.rfind('/', 0, index2_dir)
+            
+            save_path = current_file[0: index1_dir] + '/' + args.folder 
+            if not os.path.exists(save_path) :
+                os.makedirs(save_path)
+            
+            filename = current_file[0: index1_dir] + '/' + args.folder + current_file[index2_dir: len(current_file)]
 
-        #print("save: " + filename)
+            #print("save: " + filename)
 
-        RandomSampleDisp(current_file, filename, args.scale)
+            RandomSampleDisp(current_file, filename, args.scale)
 

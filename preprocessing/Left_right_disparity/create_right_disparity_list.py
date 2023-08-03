@@ -61,19 +61,21 @@ def CreateRightDisp(disp_src, disp_tar, scale):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='show the histgram of disparity')
 
-    parser.add_argument("--src", type=str, default='', help='input disparity image')
-    parser.add_argument("--tar", type=str, default='', help='output disparity image')
-    parser.add_argument("--txtlist", type=str, default='', help='input disparity image')
-    parser.add_argument("--srcfolder", type=str, default='', help='input disparity image')
-    parser.add_argument("--tarfolder", type=str, default='', help='output disparity image')
+    parser.add_argument("--src", type=str, default=None, help='input disparity image')
+    parser.add_argument("--tar", type=str, default=None, help='output disparity image')
+    parser.add_argument("--txtlist", type=str, default=None, help='input disparity image')
+    parser.add_argument("--srcfolder", type=str, default=None, help='input disparity image')
+    parser.add_argument("--tarfolder", type=str, default=None, help='output disparity image')
     parser.add_argument('--disp_scale', type=float ,default=256, help='random select scale')
     
     args = parser.parse_args()
 
     # test
-    CreateRightDisp(args.src, args.tar, args.disp_scale)
-    exit()
+    if args.src and args.tar :
+        CreateRightDisp(args.src, args.tar, args.disp_scale)
 
+
+    if args.
     filelist = load_vaihingen_data(args.txtlist, args.srcfolder)
 
     for current_file in filelist:
