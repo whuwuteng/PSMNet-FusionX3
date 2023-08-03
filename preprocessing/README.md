@@ -81,44 +81,46 @@ make
 
 ## Prepare training data
 
-Considering that we have published [two dataset](https://zenodo.org/record/8200023) :  DublinCity and Toulouse2020. We use the DublinCity as an example to show how to prepare the training data.
+Considering that we have published [two dataset](https://zenodo.org/record/8200023) :  DublinCity and Toulouse2020. We use the DublinCity as an example to show how to prepare the training data, the file structure of the folder is :
 
 ````
 └── DublinCity-stereo_echo_new
     │
-    ├── testing                   				# evaluation data
-    │   ├── 3489_DUBLIN_...          			# stereo pair
-    │   │   ├── colored_0						# left images
-    │	│   │   ├── 3489_DUBLIN_..._0000.png	# crop image 1
-    │	│   │   ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│   │   └── ...
-    │   │   ├── colored_1						# right images
-    │	│   │   ├── 3489_DUBLIN_..._0000.png	# crop image 1
-    │	│   │   ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│   │   └── ...
-    │   │   └── disp_occ						# disparity images for the left image
-    │	│       ├── 3489_DUBLIN_..._0000.png	# crop image 1
-    │	│       ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│       └── ...
-    │   └── test_filelist_full.txt    			# all the test folders
-    ├── training                   				# training data
-    │   ├── 3489_DUBLIN_...          			# stereo pair
-    │   │   ├── colored_0						# left images
-    │	│   │   ├── 3489_DUBLIN_..._0000.png	# crop image 1
-    │	│   │   ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│   │   └── ...
-    │   │   ├── colored_1						# right images
-    │	│   │   ├── 3489_DUBLIN_..._0000.png	# crop image 1
-    │	│   │   ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│   │   └── ...
-    │   │   └── disp_occ						# disparity images for the left image
-    │	│       ├── 3489_DUBLIN_..._0000.png	# crop image 1 
-    │	│       ├── 3489_DUBLIN_..._0001.png	# crop image 2
-    │	│       └── ...
-    │   ├── dublin_trainlist_full.txt   		# image used for training (1200 images)
-    │   └── dublin_vallist_full.txt    			# image used for testing (200 images)
-    └── Dublin_BHratio_ax.png     				# Base height ratio information
+    ├── testing                                  # evaluation data
+    │   ├── 3489_DUBLIN_...                      # stereo pair
+    │   │   ├── colored_0                        # left images
+    │    │   │   ├── 3489_DUBLIN_..._0000.png    # crop image 1
+    │    │   │   ├── 3489_DUBLIN_..._0001.png    # crop image 2
+    │    │   │   └── ...
+    │   │   ├── colored_1                        # right images
+    │    │   │   ├── 3489_DUBLIN_..._0000.png    # crop image 1
+    │    │   │   ├── 3489_DUBLIN_..._0001.png    # crop image 2
+    │    │   │   └── ...
+    │   │   └── disp_occ                         # disparity images for the left image
+    │    │       ├── 3489_DUBLIN_..._0000.png    # crop image 1
+    │    │       ├── 3489_DUBLIN_..._0001.png    # crop image 2
+    │    │       └── ...
+    │   └── test_filelist_full.txt               # all the test folders
+    ├── training                                 # training data
+    │   ├── 3489_DUBLIN_...                      # stereo pair
+    │   │   ├── colored_0                        # left images
+    │    │   │   ├── 3489_DUBLIN_..._0000.png    # crop image 1
+    │    │   │   ├── 3489_DUBLIN_..._0001.png    # crop image 2
+    │    │   │   └── ...
+    │   │   ├── colored_1                        # right images
+    │    │   │   ├── 3489_DUBLIN_..._0000.png    # crop image 1
+    │    │   │   ├── 3489_DUBLIN_..._0001.png    # crop image 2
+    │    │   │   └── ...
+    │   │   └── disp_occ                         # disparity images for the left image
+    │    │       ├── 3489_DUBLIN_..._0000.png    # crop image 1 
+    │    │       ├── 3489_DUBLIN_..._0001.png    # crop image 2
+    │    │       └── ...
+    │   ├── dublin_trainlist_full.txt            # image used for training (1200 images)
+    │   └── dublin_vallist_full.txt              # image used for testing (200 images)
+    └── Dublin_BHratio_ax.png                    # Base height ratio information
 ````
+
+
 
 ## Feed Back
 
