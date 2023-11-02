@@ -4,9 +4,20 @@
 
 In the folder, the code of PSMNet-FusionX3 is provide. In the [paper](https://openaccess.thecvf.com/content/CVPR2023W/PCV/html/Wu_PSMNet-FusionX3_LiDAR-Guided_Deep_Learning_Stereo_Dense_Matching_on_Aerial_Images_CVPRW_2023_paper.html),  Pytorch and [PytorchLightning](https://www.pytorchlightning.ai/index.html) are used. In the following, the training and testing part are introduced.
 
+## Prerequisites
+
+- PyTorch
+- numpy
+- easydict
+- scikit-image
+- PIL
+- PyTorch Lightning (for lightning version)
+
 ## Training
 
 Before training, the training data need to be prepare before training, the detail can be found in folder [preprocessing](../preprocessing).
+
+
 
 
 
