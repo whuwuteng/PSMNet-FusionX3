@@ -52,7 +52,20 @@ sudo apt-get install libeigen3-dev \
                      libtiff-dev \
                      libpng-dev \
                      libjpeg-dev \
-                     
+
+
+# install OpenEXR
+git clone --recurse https://github.com/AcademySoftwareFoundation/openexr.git
+cd openexr && \
+mkdir build && \
+cd build && \
+cmake .. &&\
+make -j4 && \
+make install
+
+## exit to the main
+cd ~
+
 # install OpenImageIO
 git clone --recurse https://github.com/OpenImageIO/oiio.git && \
 cd oiio && \
